@@ -1,8 +1,8 @@
-<%@page import="com.lsacad.dao.StudentDao"%>
-<jsp:useBean id="stud" class="com.lsacad.bean.Student"></jsp:useBean>  
-<jsp:setProperty property="*" name="stud"/>  
+<%@page import="com.lsacad.dao.SubjectsDAO"%>
+<jsp:useBean id="sub" class="com.lsacad.bean.Subject"></jsp:useBean>  
+<jsp:setProperty property="*" name="sub"/>  
 <%  
 
-		int i = StudentDao.updateStudent(stud);
+		int i = SubjectsDAO.updateSubject(sub);
 		response.sendRedirect("Subjectlist.jsp");  
 %> 

@@ -1,13 +1,13 @@
-<%@page import="com.lsacad.dao.StudentDao"%>  
-<jsp:useBean id="stud" class="com.lsacad.bean.Student"></jsp:useBean>  
-<jsp:setProperty property="*" name="stud"/>  
+<%@page import="com.lsacad.dao.TeacherDAO"%>  
+<jsp:useBean id="teacher" class="com.lsacad.bean.Teacher"></jsp:useBean>  
+<jsp:setProperty property="*" name="teacher"/>  
   
 <%  
-int i = StudentDao.insertstudent(stud);
+int i = TeacherDAO.insertTeacher(teacher);
 
 if(i>0){  
-response.sendRedirect("Studentlist.jsp");  
+response.sendRedirect("Teacherlist.jsp");  
 }else{  
-response.sendRedirect("StudentError.jsp");  
+response.sendRedirect("TeacherError.jsp");  
 }  
 %> 

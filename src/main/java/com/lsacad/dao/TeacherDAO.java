@@ -14,7 +14,7 @@ public class TeacherDAO {
 	private static String JDBCURL = "jdbc:mysql://localhost:3306/learners_academy";
 	private static String jdbcusername = "root";
 	private static String jdbcpassword = "Reddy";
-	private static String jdbcriver = "com.mysql.jdbc.Driver";
+	private static String jdbcriver = "com.mysql.cj.jdbc.Driver";
 	
 	
 	
@@ -47,7 +47,9 @@ protected static Connection getconnection() {
 	
 }
 //insert query
-public static void insertTeacher(Teacher teacher) {
+public static int insertTeacher(Teacher teacher) {
+	int status = 0;
+
 //	try with resource method
 	try (Connection connection =getconnection(); PreparedStatement preparedStatement = connection.prepareStatement(teachersInsertQuery)) {
         preparedStatement.setString(1, teacher.getFname());
@@ -60,6 +62,7 @@ public static void insertTeacher(Teacher teacher) {
     } catch (SQLException e) {
         e.printStackTrace();
     }
+	return status;
 }
 //list query
 public static List<Teacher> listTeacher() {

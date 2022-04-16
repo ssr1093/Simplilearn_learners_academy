@@ -20,7 +20,7 @@ public class StudentDao {
 	
 	
 //	queries for add, delete, update the students
-	private static final String studentInsertQuery= "Insert into students (fname, lname, age, aclass) values (?, ?, ?, ?)";
+	private static final String studentInsertQuery= "Insert into students (fname, lname, age, aclass ) values (?, ?, ?, ? )";
 	
 
 	private static final String SELECT_studentsBY_ID = "select id, fname, lname, age, aclass from students where id =?";
@@ -50,9 +50,11 @@ protected static Connection getconnection() {
 //insert query
 public static int insertstudent(Student stud) {
 	int status = 0;
-//	try with resource method
-	try (Connection connection =getconnection(); PreparedStatement ps = connection.prepareStatement(studentInsertQuery)) {
-        ps.setString(1, stud.getFname());
+
+	try {
+		Connection connection =getconnection();
+		PreparedStatement ps = connection.prepareStatement(studentInsertQuery);
+		ps.setString(1, stud.getFname());
         ps.setString(2, stud.getLname());
         ps.setInt(3, stud.getAge());
         ps.setString(4, stud.getAclass());

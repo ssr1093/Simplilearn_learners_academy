@@ -22,7 +22,7 @@ public class SubjectsDAO {
 	private static final String subjectsInsertQuery= "Insert into subjects (name, shortcut) values (?, ?)";
 	
 
-	private static final String SELECT_subjectsBY_ID = "select id,name, shortcut from subjects where id =?";
+	private static final String SELECT_subjectsBY_ID = "select id, name, shortcut from subjects where id =?";
 	private static final String SELECT_ALL_subjects = "select * from subjects";
 	private static final String DELETE_subjects_SQL = "delete from subjects where id = ?";
 	private static final String UPDATE_subjects_SQL = "update subjects set name = ?,shortcut= ? where id = ?";
@@ -47,14 +47,14 @@ protected static Connection getconnection() {
 	
 }
 //insert query
-public static int insertsubjet(Subject subject) {
+public static int insertsubjet(Subject sub) {
 	int status = 0;
 //	try with resource method
 	try (Connection connection =getconnection(); PreparedStatement ps = connection.prepareStatement(subjectsInsertQuery)) {
-        ps.setString(1, subject.getName());
-        ps.setString(2, subject.getShortcut());
+        ps.setString(1, sub.getName());
+        ps.setString(2, sub.getShortcut());
         System.out.println(ps);
-        ps.executeUpdate();
+        status = ps.executeUpdate();
     } catch (SQLException e) {
         e.printStackTrace();
     }

@@ -17,14 +17,13 @@
 <h1>Subject List</h1>  
   
 <%  
-List<Subject> subject =SubjectsDAO.listSubject();  
-request.setAttribute("list", subject);  
+List<Subject> sub =SubjectsDAO.listSubject();  
+request.setAttribute("sub", sub);  
 %>  
   
 <table border="1" width="90%">  
-<tr><th>Id</th><th>First Name</th><th>Second Name</th><th>Age</th>  
-<th>Class</th><th>Edit</th><th>Delete</th></tr>  
-<c:forEach items="${subject}" var="sub">  
+<tr><th>Id</th><th>Subject Name</th><th>Shortcut Name</th><th>Edit</th><th>Delete</th></tr>  
+<c:forEach items="${sub}" var="sub">  
 <tr><td>${sub.getId()}</td><td>${sub.getName()}</td>
  <td>${sub.getShortcut()}</td>
 <td><a href="Subjecteditform.jsp?id=${sub.getId()}">Edit</a></td>  

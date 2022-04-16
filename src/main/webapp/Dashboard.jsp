@@ -31,6 +31,6 @@ if(session.getAttribute("username")==null) {
   <a href="Classlist.jsp">Classes</a><br><br>
   
   <a href="TeacherList.jsp">Teacher</a><br><br>
-  <a href="SubjectsList.jsp">subjects</a><br><br>
+  <a href="Subjectlist.jsp">subjects</a><br><br>
    <a href="Logout.jsp">Logout</a><br>
 </div>
