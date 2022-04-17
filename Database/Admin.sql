@@ -1,3 +1,12 @@
+CREATE TABLE `login` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(55) NOT NULL,
+  `password` varchar(55) NOT NULL,
+  `name` varchar(11) NOT NULL,
+  `age` int DEFAULT NULL,
+  PRIMARY KEY (`id`)
+)
+
 CREATE TABLE `classes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `section` int(55) NOT NULL,
