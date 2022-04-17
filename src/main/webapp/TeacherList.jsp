@@ -17,19 +17,19 @@
 <h1>Teachers List</h1>  
   
 <%  
-List<Teacher> teacher =TeacherDAO.listTeacher();  
-request.setAttribute("teacher", teacher);  
+List<Teacher> teach =TeacherDAO.listTeacher();  
+request.setAttribute("teach", teach);  
 %>  
   
 <table border="1" width="90%">  
 <tr><th>Id</th><th>First Name</th><th>Second Name</th><th>Age</th>  
 <th>Edit</th><th>Delete</th></tr>  
-<c:forEach items="${teachers}" var="teacher">  
-<tr><td>${teacher.getId()}</td><td>${teacher.getFname()}</td>
-<td>${teacher.getLname()}</td>
- <td>${teacher.getAge()}</td>
-<td><a href="Teachereditform.jsp?id=${teacher.getId()}">Edit</a></td>  
-<td><a href="Teacherdelete.jsp?id=${teacher.getId()}">Delete</a></td></tr>  
+<c:forEach items="${teach}" var="teach">  
+<tr><td>${teach.getId()}</td><td>${teach.getFname()}</td>
+<td>${teach.getLname()}</td>
+ <td>${teach.getAge()}</td>
+<td><a href="Teachereditform.jsp?id=${teach.getId()}">Edit</a></td>  
+<td><a href="Teacherdelete.jsp?id=${teach.getId()}">Delete</a></td></tr>  
 </c:forEach>  
 </table>  
 

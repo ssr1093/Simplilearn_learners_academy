@@ -47,14 +47,16 @@ protected static Connection getconnection() {
 	
 }
 //insert query
-public static int insertTeacher(Teacher teacher) {
+public static int insertTeacher(Teacher teach) {
 	int status = 0;
 
 //	try with resource method
-	try (Connection connection =getconnection(); PreparedStatement preparedStatement = connection.prepareStatement(teachersInsertQuery)) {
-        preparedStatement.setString(1, teacher.getFname());
-        preparedStatement.setString(2, teacher.getLname());
-        preparedStatement.setInt(3, teacher.getAge());
+	try {
+		Connection connection =getconnection(); PreparedStatement
+		preparedStatement = connection.prepareStatement(teachersInsertQuery);
+        preparedStatement.setString(1, teach.getFname());
+        preparedStatement.setString(2, teach.getLname());
+        preparedStatement.setInt(3, teach.getAge());
        
        
         System.out.println(preparedStatement);
@@ -66,25 +68,25 @@ public static int insertTeacher(Teacher teacher) {
 }
 //list query
 public static List<Teacher> listTeacher() {
-	List<Teacher> teachers = new ArrayList<Teacher>();
+	List<Teacher> teacher = new ArrayList<Teacher>();
 	try {
 		Connection connection =getconnection();
 		PreparedStatement preparedStatement =connection.prepareStatement(SELECT_ALL_teachers);
 		System.out.println(preparedStatement);
 		ResultSet rs = preparedStatement.executeQuery();
 		while (rs.next()) {
-			Teacher teacher = new Teacher();
-			teacher.setId(rs.getInt("id"));
-			teacher.setFname( rs.getString("fname"));
-			teacher.setLname(rs.getString("lname"));
-			teacher.setAge(rs.getInt("age"));
-			teachers.add(teacher);
+			Teacher teach = new Teacher();
+			teach.setId(rs.getInt("id"));
+			teach.setFname( rs.getString("fname"));
+			teach.setLname(rs.getString("lname"));
+			teach.setAge(rs.getInt("age"));
+			teacher.add(teach);
 		
 		}
 	} catch (SQLException e) {
 		e.printStackTrace();
 	}
-	return teachers;
+	return teacher;
 	
 }
 // select student query
@@ -109,13 +111,13 @@ try {
 	return teachers;
 }
 //delete query
-public static boolean deleteTeacher(Teacher teacher) {
+public static boolean deleteTeacher(Teacher teach) {
 	boolean deleted = false; 
 	try {
 		Connection connection =getconnection();
 	
 		PreparedStatement preparedStatement =connection.prepareStatement(DELETE_teachers_SQL);
-		preparedStatement.setInt(1, teacher.getId());
+		preparedStatement.setInt(1, teach.getId());
 		deleted=preparedStatement.executeUpdate()>0;
 	}
  catch (Exception e) {
@@ -125,15 +127,15 @@ return deleted;
 
 }
 //update query
-public static int updateteacher(Teacher teacher) {
+public static int updateteacher(Teacher teach) {
 	int updated = 0; 
 	try {
 		Connection connection =getconnection();
 	
 		PreparedStatement preparedStatement =connection.prepareStatement(UPDATE_teachers_SQL);
-		preparedStatement.setString(1, teacher.getFname());
-        preparedStatement.setString(2, teacher.getLname());
-        preparedStatement.setInt(3, teacher.getAge());
+		preparedStatement.setString(1, teach.getFname());
+        preparedStatement.setString(2, teach.getLname());
+        preparedStatement.setInt(3, teach.getAge());
         updated=preparedStatement.executeUpdate();
 	}
  catch (Exception e) {

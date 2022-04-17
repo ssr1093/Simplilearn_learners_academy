@@ -1,9 +1,8 @@
-<%@page import="com.lsacad.bean.Student"%>
-<%@page import="com.lsacad.dao.StudentDao"%>  
-<jsp:useBean id="stud" class="com.lsacad.bean.Student"></jsp:useBean>  
-<jsp:setProperty property="*" name="stud"/>  
+<%@page import="com.lsacad.bean.Teacher"%>
+<%@page import="com.lsacad.dao.TeacherDAO"%>  
+<jsp:useBean id="teach" class="com.lsacad.bean.Teacher"></jsp:useBean>  
+<jsp:setProperty property="*" name="teach"/>  
 <%  
-	StudentDao.deleteStudent(stud);
-		
-		response.sendRedirect("Studentlist.jsp");  
+	TeacherDAO.deleteTeacher(teach);		
+		response.sendRedirect("TeacherList.jsp");  
 %>  
